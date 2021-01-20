@@ -1,0 +1,10 @@
+export { default as ArrowLeft } from './ArrowLeft';
+export { default as Cross } from './Cross';
+export { default as Delete } from './Delete';
+export { default as Edit } from './Edit';
+export { default as Home } from './Home';
+export { default as Instagram } from './Instagram';
+export { default as Logo } from './Logo';
+export { default as Share } from './Share';
+export { default as Upload } from './Upload';
+export { default as Youtube } from './Youtube';
