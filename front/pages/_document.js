@@ -109,6 +109,10 @@ export default class MyDocument extends Document {
             content="/icon/ms-icon-144x144.png"
           />
           <meta name="theme-color" content="#ffffff" />
+          <meta
+            name="viewport"
+            content="width=device-width, height=device-height, initial-scale=1, user-scalable=no"
+          />
         </Head>
         <body>
           <Main />

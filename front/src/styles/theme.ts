@@ -1,5 +1,3 @@
-import baseStyled, { css, ThemedStyledInterface } from 'styled-components';
-
 const size = {
   mobile: 576,
   tablet: 778,
@@ -12,7 +10,7 @@ const media = {
   desktop: `(max-width: ${size.desktop}px)`,
 };
 
-const color = {
+const colors = {
   red: '#ff525c',
   orange: '#fc6b01',
   blue: '#0983ff',
@@ -28,7 +26,7 @@ const color = {
 const theme = {
   size,
   media,
-  color,
+  colors,
 };
 
 export default theme;
