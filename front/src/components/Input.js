@@ -52,11 +52,11 @@ const Message = styled.div`
 `;
 
 const Error = styled.span`
-  color: ${(props) => props.theme.color.primary};
+  color: ${(props) => props.theme.colors.primary};
 `;
 
 const Info = styled.span`
-  color: ${(props) => props.theme.color.green};
+  color: ${(props) => props.theme.colors.green};
 `;
 
 export { Row, Input, Label, Message, Error, Info };

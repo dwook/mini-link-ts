@@ -147,7 +147,7 @@ const InputContainer = styled.div`
   input {
     width: 40%;
     border: none;
-    color: ${(props) => props.theme.color.primary};
+    color: ${(props) => props.theme.colors.primary};
     outline: none;
     font-weight: bold;
     font-size: 16px;
@@ -221,7 +221,7 @@ const Item = styled.div`
     padding: 10px;
     text-transform: uppercase;
     font-weight: bold;
-    background-color: ${(props) => props.theme.color.primary};
+    background-color: ${(props) => props.theme.colors.primary};
     color: #fff;
     white-space: nowrap;
   }
@@ -241,7 +241,7 @@ const Item = styled.div`
     white-space: nowrap;
     strong {
       font-weight: bold;
-      color: ${(props) => props.theme.color.primary};
+      color: ${(props) => props.theme.colors.primary};
     }
   }
 `;

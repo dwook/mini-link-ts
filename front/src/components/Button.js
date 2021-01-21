@@ -13,12 +13,12 @@ const StyledButton = styled.button`
   ${(props) => {
     if (props.primary) {
       return `
-        background: ${props.theme.color.primary};
+        background: ${props.theme.colors.primary};
         color: #fff;
-        box-shadow: ${props.theme.color.primary}4D 0px 4px 8px 0px,
-        ${props.theme.color.primary}40 0px 2px 4px 0px;
+        box-shadow: ${props.theme.colors.primary}4D 0px 4px 8px 0px,
+        ${props.theme.colors.primary}40 0px 2px 4px 0px;
         &:hover {
-          box-shadow: ${props.theme.color.primary}4D 0px 4px 8px 0px;
+          box-shadow: ${props.theme.colors.primary}4D 0px 4px 8px 0px;
         }
     `;
     }

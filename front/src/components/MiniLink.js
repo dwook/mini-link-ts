@@ -10,11 +10,11 @@ const StyledMiniLink = styled.div`
   background: #fff;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 0 4px 0 rgba(0,0,0,.2);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   .content {
     text-align: left;
-    color: ${(props) => props.theme.color.darkgray};
+    color: ${(props) => props.theme.colors.darkgray};
     font-size: 16px;
     position: absolute;
     bottom: 1.5rem;
@@ -44,7 +44,7 @@ const StyledMiniLink = styled.div`
     align-items: flex-start;
     left: 0;
     padding: 1rem;
-    color: ${(props) => props.theme.color.darkgray};
+    color: ${(props) => props.theme.colors.darkgray};
   }
   .click {
     padding: 7px 10px;
@@ -63,7 +63,7 @@ const StyledMiniLink = styled.div`
 `;
 
 const Thumbnail = styled.div`
-  background: ${(props) => props.theme.color.gray};
+  background: ${(props) => props.theme.colors.gray};
   width: 100%;
   padding-top: 100%;
   position: relative;

@@ -8,7 +8,7 @@ import CircleButton from './CircleButton';
 const StyledImageUploadArea = styled.div`
   height: 200px;
   margin: 0 20px 20px;
-  background-color: ${(props) => props.theme.color.gray};
+  background-color: ${(props) => props.theme.colors.gray};
   background-image: url(${(props) => props.image});
   background-size: contain;
   background-repeat: no-repeat;
@@ -41,7 +41,7 @@ const ButtonList = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   ${ButtonContainer} {
-    background: ${(props) => props.theme.color.primary};
+    background: ${(props) => props.theme.colors.primary};
     height: 50px;
     width: 50px;
     border-radius: 50%;

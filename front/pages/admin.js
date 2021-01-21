@@ -138,7 +138,7 @@ const Admin = () => {
 };
 
 const Header = styled.div`
-  background-color: ${(props) => props.mainColor || props.theme.color.yellow};
+  background-color: ${(props) => props.mainColor || props.theme.colors.yellow};
   height: 240px;
   width: 100%;
   position: fixed;
@@ -168,7 +168,7 @@ const Title = styled.div`
 `;
 
 const VisitBanner = styled.div`
-  background-color: ${(props) => props.theme.color.gray};
+  background-color: ${(props) => props.theme.colors.gray};
   .container {
     max-width: 600px;
     margin: 0 auto;

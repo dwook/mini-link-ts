@@ -24,7 +24,7 @@ const SwitchInput = styled.div`
 
     &:checked {
       ~ .container {
-        background: ${(props) => props.theme.color.primary};
+        background: ${(props) => props.theme.colors.primary};
 
         &:before {
           opacity: 0;

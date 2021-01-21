@@ -22,7 +22,7 @@ const sigunp = () => {
   const { id } = router.query;
   const dispatch = useDispatch();
   const { signUpDone, signUpError, checkUserExistResult } = useSelector(
-    (state) => state.user
+    (state) => state.user,
   );
   const { register, handleSubmit, setValue, watch, errors } = useForm();
   const username = useRef();
@@ -183,7 +183,7 @@ const Intro = styled.div`
     display: flex;
   }
   a {
-    color: ${(props) => props.theme.color.primary};
+    color: ${(props) => props.theme.colors.primary};
     margin-top: 6px;
     font-weight: bold;
   }

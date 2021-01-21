@@ -11,7 +11,7 @@ const StyledJumbotron = styled.div`
   flex-direction: column;
   width: 100%;
   height: 270px;
-  background-color: ${(props) => props.theme.color.primary};
+  background-color: ${(props) => props.theme.colors.primary};
   text-align: center;
   .container {
     max-width: 450px;
@@ -55,9 +55,7 @@ const Jumbotron = () => {
           <H2>{`${userInfo?.username}님, 안녕하세요!`}</H2>
           <Link href="/admin">
             <a>
-              <Button full>
-                관리자 페이지로 이동
-              </Button>
+              <Button full>관리자 페이지로 이동</Button>
             </a>
           </Link>
         </div>

@@ -25,7 +25,7 @@ const MiniHome = ({ miniHome, miniLinks, username, ip }) => {
     (linkId) => () => {
       axios.post(`${backURL}/visit?linkId=${linkId}&ip=${ip}`);
     },
-    []
+    [],
   );
   const onShareClick = useCallback(() => {
     try {
@@ -183,7 +183,7 @@ export async function getServerSideProps(context) {
 }
 
 const Header = styled.div`
-  background-color: ${(props) => props.mainColor || props.theme.color.yellow};
+  background-color: ${(props) => props.mainColor || props.theme.colors.yellow};
   height: 240px;
   width: 100%;
   position: fixed;
@@ -211,7 +211,7 @@ const URLContainer = styled.div`
 
 const URLTextarea = styled.textarea`
   width: 100%;
-  background-color: ${(props) => props.theme.color.gray};
+  background-color: ${(props) => props.theme.colors.gray};
   text-align: center;
   border: none;
   border-radius: 6px;

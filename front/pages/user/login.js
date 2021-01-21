@@ -84,7 +84,7 @@ const Intro = styled.div`
     display: flex;
   }
   a {
-    color: ${(props) => props.theme.color.primary};
+    color: ${(props) => props.theme.colors.primary};
     margin-top: 6px;
     font-weight: bold;
   }

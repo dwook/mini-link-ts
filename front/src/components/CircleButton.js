@@ -24,13 +24,13 @@ const StyledCircleButton = styled.button`
   ${(props) => {
     if (props.primary) {
       return `
-        background: ${props.theme.color.primary};
+        background: ${props.theme.colors.primary};
         color: #fff;
     `;
     }
     return `
       background: #fff;
-      color: ${props.theme.color.black};
+      color: ${props.theme.colors.black};
     `;
   }}
 `;
