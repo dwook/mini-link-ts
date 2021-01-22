@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { END } from 'redux-saga';
 import axios from 'axios';
@@ -11,8 +12,8 @@ import Button from '../src/components/Button';
 import { CASELIST } from '../config';
 
 const Home = () => {
-  const [id, setId] = useState();
-  const onInputChange = (e) => {
+  const [id, setId] = useState<string>('');
+  const onInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setId(e.target.value);
   };
 
@@ -57,7 +58,6 @@ const Home = () => {
                   <div className="info">
                     <span className="category">{item.category}</span>
                     <span className="name">
-                      {' '}
                       {item.name}
                     </span>
                     <span className="url">
@@ -65,7 +65,7 @@ const Home = () => {
                       <strong>{item.id}</strong>
                     </span>
                   </div>
-                  <Thumbnail src={item.img}>
+                  <Thumbnail imageURL={item.img}>
                     <img className="mockup" src={item.mockup} alt={item.name} />
                   </Thumbnail>
                 </Item>
@@ -227,8 +227,12 @@ const Item = styled.div`
   }
 `;
 
-const Thumbnail = styled.div`
-  background-image: url(${(props) => props.src});
+interface ThumbnailProps {
+  imageURL: string;
+}
+
+const Thumbnail = styled.div < ThumbnailProps > `
+  background-image: url(${(props) => props.imageURL});
   background-size: cover;
   background-position: center;
   width: 100%;

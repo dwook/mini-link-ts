@@ -138,7 +138,11 @@ const Admin = () => {
   );
 };
 
-const Header = styled.div`
+interface HeaderProps {
+  mainColor: string;
+}
+
+const Header = styled.div < HeaderProps > `
   background-color: ${(props) => props.mainColor || props.theme.colors.yellow};
   height: 240px;
   width: 100%;
