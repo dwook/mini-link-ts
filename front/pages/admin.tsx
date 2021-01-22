@@ -102,8 +102,8 @@ const Admin = () => {
         <Section>
           <Title>링크 관리하기</Title>
           <LinksContainer>
-            {userLinks &&
-              userLinks.map((link) => (
+            {userLinks
+              && userLinks.map((link) => (
                 <MiniLink key={link.id} name={link.name} imageURL={link.image}>
                   <div className="detail">
                     <div>
@@ -114,7 +114,8 @@ const Admin = () => {
                       )}
                     </div>
                     <div className="click">
-                      클릭수<span className="count">{link.VisitCount}</span>
+                      클릭수
+                      <span className="count">{link.VisitCount}</span>
                     </div>
                   </div>
                   <div className="edit">
