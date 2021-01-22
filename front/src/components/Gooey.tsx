@@ -1,6 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
+interface GooeyProps {
+  content: React.ReactNode;
+}
 
 const StyledContainer = styled.div`
   font-size: 1.2rem;
@@ -12,7 +15,7 @@ const StyledContainer = styled.div`
   filter: url('#gooey');
 `;
 
-const Gooey = ({ content }) => (
+const Gooey = ({ content }:GooeyProps) => (
   <>
     <svg width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
       <defs>
@@ -31,10 +34,6 @@ const Gooey = ({ content }) => (
     <StyledContainer>{content}</StyledContainer>
   </>
 );
-
-Gooey.propTypes = {
-  content: PropTypes.node,
-};
 
 Gooey.defaultProps = {
   content: null,

@@ -1,8 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const StyledBadge = styled.div`
+interface BadgeProps {
+  text?: string;
+  primary?: boolean;
+}
+
+const StyledBadge = styled.div < BadgeProps > `
   display: inline-block;
   padding: 8px 8px 6px;
   border-radius: 16px;
@@ -10,25 +14,20 @@ const StyledBadge = styled.div`
   ${(props) => {
     if (props.primary) {
       return `
-        background: ${props.theme.color.primary};
+        background: ${props.theme.colors.primary};
         color: #fff;
     `;
     }
     return `
       background: #fff;
-      color: ${props.theme.color.darkgray};
+      color: ${props.theme.colors.darkgray};
     `;
   }}
 `;
 
-const Badge = ({ text, primary }) => (
+const Badge = ({ text, primary }: BadgeProps) => (
   <StyledBadge primary={primary}>{text}</StyledBadge>
 );
-
-Badge.propTypes = {
-  text: PropTypes.string,
-  primary: PropTypes.bool,
-};
 
 Badge.defaultProps = {
   text: '',

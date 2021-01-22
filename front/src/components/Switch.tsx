@@ -1,6 +1,9 @@
 import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
+interface SwitchProps {
+  name: string;
+}
 
 const SwitchInput = styled.div`
   background-color: transparent;
@@ -73,7 +76,7 @@ const SwitchInput = styled.div`
   }
 `;
 
-const Switch = forwardRef(({ name }, ref) => (
+const Switch = forwardRef(({ name }: SwitchProps, ref: any) => (
   <SwitchInput className="switch">
     <label htmlFor={name}>
       <input name={name} type="checkbox" role="switch" id={name} ref={ref} />
@@ -82,10 +85,6 @@ const Switch = forwardRef(({ name }, ref) => (
     </label>
   </SwitchInput>
 ));
-
-Switch.propTypes = {
-  name: PropTypes.string,
-};
 
 Switch.defaultProps = {
   name: '',

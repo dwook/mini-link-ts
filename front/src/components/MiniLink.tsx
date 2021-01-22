@@ -1,6 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
+interface ThumbnailProps {
+  imageURL: string;
+}
+
+const Thumbnail = styled.div < ThumbnailProps > `
+  background: ${(props) => props.theme.colors.gray};
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+  background-image: url(${(props) => props.imageURL});
+  background-size: cover;
+`;
+
+interface MiniLinkProps {
+  name: string;
+  imageURL: string;
+  children: React.ReactNode;
+}
 
 const StyledMiniLink = styled.div`
   display: flex;
@@ -62,16 +80,7 @@ const StyledMiniLink = styled.div`
   }
 `;
 
-const Thumbnail = styled.div`
-  background: ${(props) => props.theme.colors.gray};
-  width: 100%;
-  padding-top: 100%;
-  position: relative;
-  background-image: url(${(props) => props.imageURL});
-  background-size: cover;
-`;
-
-const MiniLink = ({ name, imageURL, children }) => (
+const MiniLink = ({ name, imageURL, children }: MiniLinkProps) => (
   <StyledMiniLink>
     <Thumbnail imageURL={imageURL} />
     {children}
@@ -80,12 +89,6 @@ const MiniLink = ({ name, imageURL, children }) => (
     </div>
   </StyledMiniLink>
 );
-
-MiniLink.propTypes = {
-  name: PropTypes.string,
-  imageURL: PropTypes.string,
-  children: PropTypes.node,
-};
 
 MiniLink.defaultProps = {
   name: '',

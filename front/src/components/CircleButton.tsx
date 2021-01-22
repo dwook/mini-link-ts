@@ -1,9 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-const StyledCircleButton = styled.button`
+interface CircleButtonProps {
+  outsite?: boolean;
+  icon?: React.ReactNode;
+  href?: string;
+  primary?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const StyledCircleButton = styled.button < CircleButtonProps > `
   height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -35,7 +42,13 @@ const StyledCircleButton = styled.button`
   }}
 `;
 
-const CircleButton = ({ outsite, icon, href, primary, onClick }) => {
+const CircleButton = ({
+  outsite,
+  icon,
+  href,
+  primary,
+  onClick,
+}: CircleButtonProps) => {
   if (outsite && href) {
     return (
       <a href={href}>
@@ -61,14 +74,6 @@ const CircleButton = ({ outsite, icon, href, primary, onClick }) => {
       {icon}
     </StyledCircleButton>
   );
-};
-
-CircleButton.propTypes = {
-  outsite: PropTypes.bool,
-  icon: PropTypes.node,
-  href: PropTypes.string,
-  primary: PropTypes.bool,
-  onClick: PropTypes.func,
 };
 
 CircleButton.defaultProps = {

@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Cross } from '../icons';
+
+interface ModalProps {
+  children: React.ReactNode;
+  onModalCloseHandler: (isModalopen:boolean) => void;
+}
 
 const StyledContainer = styled.div`
   position: fixed;
@@ -30,7 +34,7 @@ const CloseButton = styled.button`
   right: 0;
 `;
 
-const Modal = ({ children, onModalCloseHandler }) => {
+const Modal = ({ children, onModalCloseHandler }: ModalProps) => {
   const [isOpen, setIsOpen] = useState(true);
   const onCloseClick = () => {
     const handler = onModalCloseHandler || setIsOpen;
@@ -49,11 +53,6 @@ const Modal = ({ children, onModalCloseHandler }) => {
       {children}
     </StyledContainer>
   );
-};
-
-Modal.propTypes = {
-  children: PropTypes.node,
-  onModalCloseHandler: PropTypes.func,
 };
 
 Modal.defaultProps = {

@@ -1,11 +1,19 @@
-import React, { useState, useRef, forwardRef, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, forwardRef, useCallback } from 'react';
 import styled from 'styled-components';
 import Upload from '../icons/Upload';
 import Delete from '../icons/Delete';
 import CircleButton from './CircleButton';
 
-const StyledImageUploadArea = styled.div`
+interface ImageUploadAreaProps {
+  name: string;
+  exImageURL: string;
+}
+
+interface ImageUploadProps {
+  image: any;
+}
+
+const StyledImageUploadArea = styled.div < ImageUploadProps > `
   height: 200px;
   margin: 0 20px 20px;
   background-color: ${(props) => props.theme.colors.gray};
@@ -54,25 +62,34 @@ const ButtonList = styled.div`
   }
 `;
 
-const ImageUploadArea = forwardRef(({ name, exImageURL }, ref) => {
-  const imageInput = useRef();
-  const [imageURL, setImageURL] = useState(exImageURL);
+const ImageUploadArea = forwardRef(({ name, exImageURL }: ImageUploadAreaProps, ref: any) => {
+  // const imageInput = useRef<HTMLInputElement>(null);
+  const [imageInput, setImageInput] = useState<HTMLInputElement | null>(null);
+  const [imageURL, setImageURL] = useState<string | ArrayBuffer | null>(exImageURL);
 
   const onClickImageUpload = useCallback(() => {
-    imageInput.current.click();
-  }, [imageInput.current]);
+    if (imageInput) {
+      imageInput.click();
+    }
+  }, [imageInput]);
+
   const onClickImageDelete = useCallback(() => {
     setImageURL(null);
   }, [imageURL]);
-  const onChangeImage = useCallback(async (e) => {
-    if (e.target.files && e.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setImageURL(e.target.result);
-      };
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  }, []);
+
+  const onChangeImage = useCallback(
+    async (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files && e.target.files[0]) {
+        const reader: FileReader = new FileReader();
+
+        reader.onload = () => {
+          setImageURL(reader.result);
+        };
+        reader.readAsDataURL(e.target.files[0]);
+      }
+    },
+    [],
+  );
 
   return (
     <StyledImageUploadArea image={imageURL}>
@@ -82,7 +99,8 @@ const ImageUploadArea = forwardRef(({ name, exImageURL }, ref) => {
         multiple
         hidden
         ref={(element) => {
-          imageInput.current = element;
+          // imageInput.current = element;
+          setImageInput(element);
           ref(element);
         }}
         onChange={onChangeImage}
@@ -111,11 +129,6 @@ const ImageUploadArea = forwardRef(({ name, exImageURL }, ref) => {
     </StyledImageUploadArea>
   );
 });
-
-ImageUploadArea.propTypes = {
-  name: PropTypes.string,
-  exImageURL: PropTypes.string,
-};
 
 ImageUploadArea.defaultProps = {
   name: '',

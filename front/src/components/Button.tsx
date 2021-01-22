@@ -1,8 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+interface ButtonProps {
+  children: React.ReactNode;
+  primary: boolean;
+  big: boolean;
+  full: boolean;
+  onClick: () => void;
+}
+
+const StyledButton = styled.button < ButtonProps > `
   border-radius: 6px;
   border: none;
   padding: 0 20px;
@@ -23,7 +30,6 @@ const StyledButton = styled.button`
     `;
     }
     return `
-      background: #fff;
       box-shadow: 0 4px 14px 0 rgba(0,0,0,0.1);
       &:hover {
         box-shadow: 0 6px 20px rgba(93,93,93,0.23);
@@ -49,22 +55,17 @@ const StyledButton = styled.button`
       width: 100%;
   `;
     }
+    return null;
   }}
 `;
 
-const Button = ({ children, primary, big, full, onClick }) => (
+const Button = ({
+  children, primary, big, full, onClick,
+}: ButtonProps) => (
   <StyledButton primary={primary} big={big} full={full} onClick={onClick}>
     {children}
   </StyledButton>
 );
-
-Button.propTypes = {
-  children: PropTypes.node,
-  primary: PropTypes.bool,
-  big: PropTypes.bool,
-  full: PropTypes.bool,
-  onClick: PropTypes.func,
-};
 
 Button.defaultProps = {
   children: null,

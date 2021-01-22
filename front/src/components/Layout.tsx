@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Footer from './Footer';
 
@@ -33,7 +32,16 @@ const Title = styled.div`
   font-weight: bold;
 `;
 
-const Layout = ({ icon, title, onClick, children }) => (
+interface LayoutProps {
+  icon: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
+  onClick: () => void;
+}
+
+const Layout = ({
+  icon, title, onClick, children,
+}: LayoutProps) => (
   <>
     <Container>
       <Top>
@@ -47,13 +55,6 @@ const Layout = ({ icon, title, onClick, children }) => (
     <Footer />
   </>
 );
-
-Layout.propTypes = {
-  icon: PropTypes.object,
-  title: PropTypes.string,
-  onClick: PropTypes.func,
-  children: PropTypes.node,
-};
 
 Layout.defaultProps = {
   icon: null,

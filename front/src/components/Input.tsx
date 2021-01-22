@@ -30,7 +30,11 @@ const Input = styled.input`
   }
 `;
 
-const Label = styled.label`
+interface LabelProps {
+  required: boolean;
+}
+
+const Label = styled.label < LabelProps > `
   width: 100%;
   padding: 10px 0;
   ${(props) => {
@@ -42,6 +46,7 @@ const Label = styled.label`
         }
     `;
     }
+    return null;
   }}
 `;
 
@@ -59,4 +64,6 @@ const Info = styled.span`
   color: ${(props) => props.theme.colors.green};
 `;
 
-export { Row, Input, Label, Message, Error, Info };
+export {
+  Row, Input, Label, Message, Error, Info,
+};

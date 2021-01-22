@@ -1,8 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const StyledContainer = styled.div`
+interface IntroductionProps {
+  content?: React.ReactNode;
+  primary?: boolean;
+}
+
+const StyledContainer = styled.div < IntroductionProps > `
   font-size: 1.2rem;
   line-height: 2;
   display: inline;
@@ -26,14 +30,9 @@ const StyledContainer = styled.div`
   }}
 `;
 
-const Introduction = ({ content, primary }) => (
+const Introduction = ({ content, primary }: IntroductionProps) => (
   <StyledContainer primary={primary}>{content}</StyledContainer>
 );
-
-Introduction.propTypes = {
-  content: PropTypes.node,
-  primary: PropTypes.bool,
-};
 
 Introduction.defaultProps = {
   content: null,

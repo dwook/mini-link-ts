@@ -1,9 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-const CoverImage = styled.div`
+interface CoverImageProps {
+  imageURL: string;
+}
+
+interface CoverButtonProps {
+  children: React.ReactNode;
+  outsite: boolean;
+  icon: React.ReactNode;
+  href: string;
+  onClick: () => void;
+}
+
+const CoverImage = styled.div < CoverImageProps > `
   max-width: 600px;
   height: 100%;
   padding-top: 20px;
@@ -29,7 +40,9 @@ const StyledCoverButton = styled.button`
   margin: 2px;
 `;
 
-const CoverButton = ({ children, outsite, icon, href, onClick }) => {
+const CoverButton = ({
+  children, outsite, icon, href, onClick,
+}: CoverButtonProps) => {
   if (outsite && href) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer">
@@ -56,14 +69,6 @@ const CoverButton = ({ children, outsite, icon, href, onClick }) => {
       {children}
     </StyledCoverButton>
   );
-};
-
-CoverButton.propTypes = {
-  children: PropTypes.node,
-  outsite: PropTypes.bool,
-  icon: PropTypes.node,
-  href: PropTypes.string,
-  onClick: PropTypes.func,
 };
 
 CoverButton.defaultProps = {
