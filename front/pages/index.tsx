@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
+import Head from 'next/head';
 import styled from 'styled-components';
 import { END } from 'redux-saga';
 import axios from 'axios';
@@ -8,36 +8,7 @@ import { userAction } from '../feature/User/slice';
 import Header from '../src/components/Header';
 import Jumbotron from '../src/components/Jumbotron';
 import Button from '../src/components/Button';
-
-const CASELIST = [
-  {
-    id: 'vivastudio',
-    category: 'fashion',
-    name: '비바스튜디오',
-    img:
-      'https://mini-link.s3.ap-northeast-2.amazonaws.com/original/1610891465951_vivastudio_cover.jpg',
-    mockup:
-      'https://mini-link.s3.ap-northeast-2.amazonaws.com/mockups_vivastudio.png',
-  },
-  {
-    id: 'alicefunk',
-    category: 'influencer',
-    name: '앨리스펑크',
-    img:
-      'https://mini-link.s3.ap-northeast-2.amazonaws.com/original/1610891792221_alicefunk_cover.jpg',
-    mockup:
-      'https://mini-link.s3.ap-northeast-2.amazonaws.com/mockups_alicefunk.png',
-  },
-  {
-    id: 'hellonature',
-    category: 'food',
-    name: '헬로네이처',
-    img:
-      'https://mini-link.s3.ap-northeast-2.amazonaws.com/original/1610894213199_hellonature_cover.jpg',
-    mockup:
-      'https://mini-link.s3.ap-northeast-2.amazonaws.com/mockups_hellonature.png',
-  },
-];
+import { CASELIST } from '../config';
 
 const Home = () => {
   const [id, setId] = useState();
@@ -47,6 +18,12 @@ const Home = () => {
 
   return (
     <div>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1, user-scalable=no"
+        />
+      </Head>
       <Header />
       <Jumbotron />
       <Container>
@@ -79,9 +56,13 @@ const Home = () => {
                 <Item>
                   <div className="info">
                     <span className="category">{item.category}</span>
-                    <span className="name"> {item.name}</span>
+                    <span className="name">
+                      {' '}
+                      {item.name}
+                    </span>
                     <span className="url">
-                      https://mini-link.site/<strong>{item.id}</strong>
+                      https://mini-link.site/
+                      <strong>{item.id}</strong>
                     </span>
                   </div>
                   <Thumbnail src={item.img}>
