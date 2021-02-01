@@ -1,17 +1,19 @@
 import axios from 'axios';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { PayloadAction } from '@reduxjs/toolkit';
 import { homeAction } from './slice';
+import { HomeInfo } from './types';
 
-function getHomeAPI(username: string) {
-  return axios.get(`/home/${username}`);
+async function getHomeAPI(username: string) {
+  const response = await axios.get<HomeInfo>(`/home/${username}`);
+  return response.data;
 }
 
-function* getHome(action: PayloadAction) {
+function* getHome(action: ReturnType<typeof homeAction.getHomeRequest>) {
   try {
-    const result = yield call(getHomeAPI, action.payload);
-    console.log(result);
-    yield put(homeAction.getHomeSuccess(result.data));
+    console.log('호출', homeAction.getHomeRequest());
+    const result:HomeInfo = yield call(getHomeAPI, action.payload);
+    console.log('결과', result, action.payload);
+    yield put(homeAction.getHomeSuccess(result));
   } catch (error) {
     console.error(error);
     yield put(homeAction.getHomeFailure(error.message));
@@ -22,14 +24,16 @@ export function* watchGetHome() {
   yield takeLatest(homeAction.getHomeRequest, getHome);
 }
 
-function editHomeAPI(data: FormData) {
-  return axios.patch(`/home/${data.get('userId')}`, data);
+async function editHomeAPI(data:FormData) {
+  console.log('데이터', data);
+  const response = await axios.patch<HomeInfo>(`/home/${data.get('userId')}`, data);
+  return response.data;
 }
 
-function* editHome(action: PayloadAction) {
+function* editHome(action: ReturnType<typeof homeAction.editHomeRequest>) {
   try {
-    const result = yield call(editHomeAPI, action.payload);
-    console.log(result);
+    const result:HomeInfo = yield call(editHomeAPI, action.payload);
+    console.log('수정결과', result);
     yield put(homeAction.editHomeSuccess(result));
   } catch (error) {
     console.error(error);

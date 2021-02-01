@@ -9,14 +9,14 @@ exports.getHome = async (req, res, next) => {
       where: {
         username: req.params.username,
       },
-      attributes: {
-        exclude: ['createdAt', 'updatedAt'],
-      },
     });
     console.log('유저아이디', user.id);
     const home = await Home.findOne({
       where: {
         UserId: user.id,
+      },
+      attributes: {
+        exclude: ['createdAt', 'updatedAt'],
       },
     });
     res.status(200).json(home);

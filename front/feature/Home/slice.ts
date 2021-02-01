@@ -1,25 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-export interface Home {
-  id: number;
-  coverImage: string,
-  mainColor?: string,
-  introduction: string;
-  instagram: string;
-  youtube: string;
-  website: string;
-  UserId: number;
-}
-
-export interface HomeState {
-  selectedHome?: Home | null;
-  getHomeLoading: boolean;
-  getHomeDone: boolean;
-  getHomeError?: string;
-  editHomeLoading: boolean;
-  editHomeDone: boolean;
-  editHomeError?: string;
-}
+import { HomeState, HomeInfo } from './types';
 
 export const initialState: HomeState = {
   selectedHome: null,
@@ -37,12 +17,12 @@ const reducers = {
     state.getHomeDone = false;
     state.getHomeError = '';
   },
-  getHomeSuccess: (state:HomeState, { payload }:PayloadAction<Home>) => {
+  getHomeSuccess: (state:HomeState, { payload }:PayloadAction<HomeInfo>) => {
     state.getHomeLoading = false;
     state.getHomeDone = true;
     state.selectedHome = payload;
   },
-  getHomeFailure: (state:HomeState, { payload }: PayloadAction<string>) => {
+  getHomeFailure: (state:HomeState, { payload }:PayloadAction<string>) => {
     state.getHomeLoading = false;
     state.getHomeError = payload;
   },
@@ -52,13 +32,13 @@ const reducers = {
   editHomeRequest: (state:HomeState) => {
     state.editHomeLoading = true;
     state.editHomeDone = false;
-    state.editHomeError = undefined;
+    state.editHomeError = '';
   },
   editHomeSuccess: (state:HomeState) => {
     state.editHomeLoading = false;
     state.editHomeDone = true;
   },
-  editHomeFailure: (state:HomeState, { payload } : PayloadAction<string>) => {
+  editHomeFailure: (state:HomeState, { payload }:PayloadAction<string>) => {
     state.editHomeLoading = false;
     state.editHomeError = payload;
   },
